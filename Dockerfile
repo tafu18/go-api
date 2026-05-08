@@ -3,12 +3,12 @@ FROM golang:1.21-alpine
 WORKDIR /app
 
 COPY go.mod ./
-# COPY go.sum ./ # Eğer varsa açın
 RUN go mod download
 
 COPY . .
 
-RUN go build -o main .
+# cmd/api altındaki main.go'yu derle
+RUN go build -o main ./cmd/api/main.go
 
 EXPOSE 8080
 
